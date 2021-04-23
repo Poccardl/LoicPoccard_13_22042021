@@ -1,0 +1,16 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    .logo {
+        width: 200px;
+        height: 50px;
+    }
+    .nav_link {
+        color: $color-primary;
+        display: flex;
+        align-items: center;
+        margin-right: 0.5rem;
+    }
+}
