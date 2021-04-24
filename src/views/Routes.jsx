@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Header } from '../components/header/Header.jsx'
 import { Footer } from '../components/footer/Footer.jsx'
 import { Home } from './Home.jsx'
-import { Login } from './Login.jsx'
+import { SignIn } from './SignIn.jsx'
 import { Profile } from './Profile.jsx'
 import { Error404 } from './Error404.jsx'
 
@@ -17,7 +17,7 @@ export class Routes extends React.Component {
                 <Header/>
                 <Switch>
                     <Route path="/" exact component={Home}></Route>
-                    <Route path="/login" exact component={Login}></Route>
+                    <Route path="/sign-in" exact component={SignIn}></Route>
                     <Route path="/profile" exact component={Profile}></Route>
                     <Route path="/" component={Error404}></Route>
                 </Switch>
