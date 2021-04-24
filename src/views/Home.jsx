@@ -1,5 +1,6 @@
 import React from 'react'
 import { Hero } from '../components/hero/Hero.jsx'
+import { Feature } from '../components/feature/Feature.jsx'
 
 export class Home extends React.Component {
 
@@ -7,6 +8,7 @@ export class Home extends React.Component {
         return (
             <>
             <Hero/>
+            <Feature/>
             </>
         )
     }
