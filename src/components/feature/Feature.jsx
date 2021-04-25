@@ -5,7 +5,6 @@ import { FeatureItem } from '../feature_item/FeatureItem.jsx'
 export class Feature extends React.Component {
 
     render() {
-        console.log("data.json ->", data)
         return (
             <>
             <section className="features">

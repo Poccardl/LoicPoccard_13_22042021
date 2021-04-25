@@ -6,8 +6,6 @@ import icon_security from '../../assets/img/icon-security.png'
 export class FeatureItem extends React.Component {
 
     render() {
-        console.log("feature props ->", this.props)
-        console.log("icon", this.props.data.icon)
         return (
             <>
             <div className="feature-item">

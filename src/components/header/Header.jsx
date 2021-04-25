@@ -14,7 +14,7 @@ export class Header extends React.Component {
                     <Link to="/">
                         <img src={logo} alt="" className="logo"/>
                     </Link>
-                    <Link to="/sign-in" className="nav_link">
+                    <Link to="/login" className="nav_link">
                         <FontAwesomeIcon icon={faUserCircle}/>
                         Sign In
                     </Link>

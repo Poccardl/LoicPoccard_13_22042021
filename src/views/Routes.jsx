@@ -17,7 +17,7 @@ export class Routes extends React.Component {
                 <Header/>
                 <Switch>
                     <Route path="/" exact component={Home}></Route>
-                    <Route path="/sign-in" exact component={SignIn}></Route>
+                    <Route path="/login" exact component={SignIn}></Route>
                     <Route path="/profile" exact component={Profile}></Route>
                     <Route path="/" component={Error404}></Route>
                 </Switch>
