@@ -23,7 +23,7 @@ export class SignInContent extends React.Component {
                         <input type="checkbox" id="remember-me"/>
                         <label htmlFor="remember-me">Remember me</label>
                     </div>
-                    <a href="" className="sign-in-button">Sign In</a>
+                    <a href="..." className="sign-in-button">Sign In</a>
                 </form>
             </section>
             </>

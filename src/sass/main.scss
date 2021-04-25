@@ -1,10 +1,11 @@
 @import './abstracts/variables';
 @import './base/base';
 @import './base/reset';
+@import '../components/account/account';
 @import '../components/feature/feature';
 @import '../components/feature_item/feature_item';
 @import '../components/footer/footer';
 @import '../components/header/header';
 @import '../components/hero/hero';
+@import '../components/profile_content/profile_content';
 @import '../components/signin_content/signin_content';
-@import '../views/signin';
