@@ -9,19 +9,18 @@ const userSession = {
 }
 
 const SessionReducer = (state = userSession, action) => {
-    console.log("action", action)
     switch(action.type) {
         case LOGIN:
             return {
-                isLogin: action.isLogin,
-                email: action.email,
-                firstName: action.firstName,
-                lastName: action.lastName,
-                token: action.token
+                isLogin: action.payload.isLogin,
+                email: action.payload.email,
+                firstName: action.payload.firstName,
+                lastName: action.payload.lastName,
+                token: action.payload.token
             }
         case LOGOUT:
             return {
-                isLogin: action.isLogin,
+                isLogin: action.payload.isLogin,
             }
         default:
             return state

@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import { Header } from '../components/header/Header.jsx'
+import Header from '../containers/header/Header.jsx'
 import { Footer } from '../components/footer/Footer.jsx'
 import { Home } from './Home.jsx'
 import { SignIn } from './SignIn.jsx'

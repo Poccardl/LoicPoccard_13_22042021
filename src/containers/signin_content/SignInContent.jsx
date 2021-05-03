@@ -1,19 +1,20 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
-
 import { connect } from 'react-redux'
-
 import { login } from '../../actions/userActions.js'
+import { userSelector } from '../../selectors/userSelector.js'
 
 class SignInContent extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            username: '',
-            password: '',
-            remember: false
+            isLogin: undefined,
+            email: undefined,
+            firstName: undefined,
+            lastName: undefined,
+            token: undefined
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,9 +28,8 @@ class SignInContent extends React.Component {
     }
 
     handleSubmit(e) {
-        console.log("handleSubmit :", e)
         // TODO: API request here
-        this.props.login("loic.poccard@gmail.com", "password1234", "")
+        this.props.login("loic.poccard@gmail.com", "POCCARD", "Loïc", "")
     }
 
     render() {
@@ -59,4 +59,4 @@ class SignInContent extends React.Component {
     }
 }
 
-export default connect(null, {login})(SignInContent)
+export default connect(userSelector, {login})(SignInContent)
