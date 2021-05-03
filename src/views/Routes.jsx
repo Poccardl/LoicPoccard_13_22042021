@@ -5,8 +5,8 @@ import Header from '../containers/header/Header.jsx'
 import { Footer } from '../components/footer/Footer.jsx'
 import { Home } from './Home.jsx'
 import { SignIn } from './SignIn.jsx'
-import { Profile } from './Profile.jsx'
 import { Error404 } from './Error404.jsx'
+import Profile from './Profile.jsx'
 
 export class Routes extends React.Component {
 

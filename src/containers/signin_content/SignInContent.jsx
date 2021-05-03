@@ -4,6 +4,8 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
 import { login } from '../../actions/userActions.js'
 import { userSelector } from '../../selectors/userSelector.js'
+import { Redirect } from 'react-router'
+import { store } from '../../app/store'
 
 class SignInContent extends React.Component {
 
@@ -51,7 +53,7 @@ class SignInContent extends React.Component {
                         <input type="checkbox" id="remember" name="remember" checked={this.state.remember} onChange={this.handleChange}/>
                         <label htmlFor="remember" >Remember me</label>
                     </div>
-                    <a className="sign-in-button" onClick={this.handleSubmit}>Sign In</a>
+                    {store.getState().session.isLogin ? <Redirect push to="/profile"/> : <a className="sign-in-button" onClick={this.handleSubmit}>Sign In</a>}
                 </form>
             </section>
             </>
