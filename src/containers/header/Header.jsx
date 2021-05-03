@@ -21,10 +21,16 @@ class Header extends React.Component {
                     </Link>
                     {store.getState().session.isLogin ?
                         <>
-                        <Link to="/" className="nav_link" onClick={() => {this.props.logout()}}>
-                            <FontAwesomeIcon icon={faSignOutAlt}/>
-                            Sign Out
-                        </Link>
+                        <div>
+                            <Link to="/profile" className="nav_link">
+                                <FontAwesomeIcon icon={faUserCircle}/>
+                                {store.getState().session.lastName}
+                            </Link>
+                            <Link to="/" className="nav_link" onClick={() => {this.props.logout()}}>
+                                <FontAwesomeIcon icon={faSignOutAlt}/>
+                                Sign Out
+                            </Link>
+                        </div>
                         </>
                         :
                         <>

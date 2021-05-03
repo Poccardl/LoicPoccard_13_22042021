@@ -7,6 +7,9 @@ nav {
         width: 200px;
         height: 50px;
     }
+    div {
+        display: flex;
+    }
     .nav_link {
         color: $color-primary;
         display: flex;
