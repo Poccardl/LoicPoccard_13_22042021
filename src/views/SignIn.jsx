@@ -1,5 +1,5 @@
 import React from 'react'
-import { SignInContent } from '../components/signin_content/SignInContent.jsx'
+import SignInContent from '../containers/signin_content/SignInContent.jsx'
 
 export class SignIn extends React.Component {
 

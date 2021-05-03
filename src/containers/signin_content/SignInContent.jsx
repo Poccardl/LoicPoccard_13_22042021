@@ -2,7 +2,11 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
-export class SignInContent extends React.Component {
+import { connect } from 'react-redux'
+
+import { login } from '../../actions/userActions.js'
+
+class SignInContent extends React.Component {
 
     constructor(props) {
         super(props)
@@ -12,6 +16,7 @@ export class SignInContent extends React.Component {
             remember: false
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange(e) {
@@ -19,6 +24,12 @@ export class SignInContent extends React.Component {
         const type = e.target.type
         const value = type === 'checkbox' ? e.target.checked : e.target.value
         this.setState({[name]: value})
+    }
+
+    handleSubmit(e) {
+        console.log("handleSubmit :", e)
+        // TODO: API request here
+        this.props.login("loic.poccard@gmail.com", "password1234", "")
     }
 
     render() {
@@ -40,10 +51,12 @@ export class SignInContent extends React.Component {
                         <input type="checkbox" id="remember" name="remember" checked={this.state.remember} onChange={this.handleChange}/>
                         <label htmlFor="remember" >Remember me</label>
                     </div>
-                    <a href="..." className="sign-in-button">Sign In</a>
+                    <a className="sign-in-button" onClick={this.handleSubmit}>Sign In</a>
                 </form>
             </section>
             </>
         )
     }
 }
+
+export default connect(null, {login})(SignInContent)
