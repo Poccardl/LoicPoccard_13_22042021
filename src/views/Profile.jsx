@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ProfileContent } from '../components/profile_content/ProfileContent.jsx'
+import ProfileContent from '../containers/profile_content/ProfileContent.jsx'
 import { userSelector } from '../selectors/userSelector.js'
 import { Redirect } from 'react-router-dom'
 import { store } from '../app/store'

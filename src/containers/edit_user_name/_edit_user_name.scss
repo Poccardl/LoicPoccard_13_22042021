@@ -1,0 +1,19 @@
+.edit_username_form {
+    .inputs {
+        display: flex;
+        justify-content: center;
+        input {
+            margin: 10px;
+            width: 150px;
+            padding: 5px;
+            font-size: 1rem;
+        }
+    }
+    .buttons {
+        display: flex;
+        justify-content: center;
+        span {
+            margin: 10px;
+        }
+    }
+}

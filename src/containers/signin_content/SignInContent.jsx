@@ -13,10 +13,10 @@ class SignInContent extends React.Component {
         super(props)
         this.state = {
             isLogin: undefined,
-            email: undefined,
-            firstName: undefined,
-            lastName: undefined,
-            token: undefined
+            email: "",
+            firstName: "",
+            lastName: "",
+            token: ""
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -53,7 +53,7 @@ class SignInContent extends React.Component {
                         <input type="checkbox" id="remember" name="remember" checked={this.state.remember} onChange={this.handleChange}/>
                         <label htmlFor="remember" >Remember me</label>
                     </div>
-                    {store.getState().session.isLogin ? <Redirect push to="/profile"/> : <a className="sign-in-button" onClick={this.handleSubmit}>Sign In</a>}
+                    {store.getState().session.isLogin ? <Redirect push to="/profile"/> : <span className="sign-in-button" onClick={this.handleSubmit}>Sign In</span>}
                 </form>
             </section>
             </>
