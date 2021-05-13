@@ -38,7 +38,6 @@ class EditUserName extends React.Component {
     }
 
     render() {
-        console.log('edit user ->', this.state.isRedirect)
         return (
             <>
             {this.state.isRedirect ?

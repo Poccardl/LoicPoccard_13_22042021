@@ -6,6 +6,7 @@ import { login } from '../../actions/userActions.js'
 import { userSelector } from '../../selectors/userSelector.js'
 import { Redirect } from 'react-router'
 import { store } from '../../app/store'
+import axios from 'axios'
 
 class SignInContent extends React.Component {
 
@@ -14,6 +15,8 @@ class SignInContent extends React.Component {
         this.state = {
             isLogin: undefined,
             email: "",
+            username: "",
+            password: "",
             firstName: "",
             lastName: "",
             token: ""
@@ -30,8 +33,44 @@ class SignInContent extends React.Component {
     }
 
     handleSubmit(e) {
-        // TODO: API request here
-        this.props.login("loic.poccard@gmail.com", "POCCARD", "Loïc", "")
+        console.log("state.email :", this.state.email, '\n state.password :', this.state.password)
+        this.apiRequest('login')
+        // this.props.login("loic.poccard@gmail.com", "POCCARD", "Loïc", "") //email, firstName, lastName, token
+    }
+
+    // "email": "tony@stark.com",
+    // "password": "password123"
+    apiRequest(type) {
+        const url = `http://localhost:3001/api/v1/user/${type}`
+        if (type === 'login') {
+            const json = {
+                "email": this.state.email,
+                "password": this.state.password
+                }
+            axios.post(url, json)
+            .then(res => {
+                const data = res.data;
+                console.log("data AXIOS ->", data)
+                console.info(data.message)
+                if (data.status === 200) {
+                    this.setState({token: data.body.token})
+                    this.connection()
+                }
+                else {
+                    // TODO: add esle exception
+                }
+            })
+        }
+        else if (type === 'signup') {
+            // signup
+        }
+        else if (type === 'profile') {
+            // profile
+        }
+    }
+
+    connection() {
+        this.props.login(this.state.token)
     }
 
     render() {
@@ -42,8 +81,8 @@ class SignInContent extends React.Component {
                 <h1>Sign In</h1>
                 <form>
                     <div className="input-wrapper">
-                        <label htmlFor="username">Username</label>
-                        <input type="text" id="username" name="username" value={this.state.username} onChange={this.handleChange}/>
+                        <label htmlFor="email">Email</label>
+                        <input type="text" id="email" name="email" value={this.state.email} onChange={this.handleChange}/>
                     </div>
                     <div className="input-wrapper">
                         <label htmlFor="password">Password</label>

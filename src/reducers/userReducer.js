@@ -13,9 +13,6 @@ const SessionReducer = (state = userSession, action) => {
         case LOGIN:
             return {
                 isLogin: action.payload.isLogin,
-                email: action.payload.email,
-                firstName: action.payload.firstName,
-                lastName: action.payload.lastName,
                 token: action.payload.token
             }
         case LOGOUT:
