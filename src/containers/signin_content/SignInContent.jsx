@@ -33,40 +33,30 @@ class SignInContent extends React.Component {
     }
 
     handleSubmit(e) {
-        console.log("state.email :", this.state.email, '\n state.password :', this.state.password)
-        this.apiRequest('login')
-        // this.props.login("loic.poccard@gmail.com", "POCCARD", "Loïc", "") //email, firstName, lastName, token
+        this.apiRequest()
     }
 
     // "email": "tony@stark.com",
     // "password": "password123"
-    apiRequest(type) {
-        const url = `http://localhost:3001/api/v1/user/${type}`
-        if (type === 'login') {
-            const json = {
-                "email": this.state.email,
-                "password": this.state.password
-                }
-            axios.post(url, json)
-            .then(res => {
-                const data = res.data;
-                console.log("data AXIOS ->", data)
-                console.info(data.message)
-                if (data.status === 200) {
-                    this.setState({token: data.body.token})
-                    this.connection()
-                }
-                else {
-                    // TODO: add esle exception
-                }
-            })
-        }
-        else if (type === 'signup') {
-            // signup
-        }
-        else if (type === 'profile') {
-            // profile
-        }
+    apiRequest() {
+        const url = `http://localhost:3001/api/v1/user/login`
+        const json = {
+            "email": this.state.email,
+            "password": this.state.password
+            }
+        axios.post(url, json)
+        .then(res => {
+            const data = res.data;
+            console.log("[login] data AXIOS ->", data)
+            console.info(data.message)
+            if (data.status === 200) {
+                this.setState({token: data.body.token})
+                this.connection()
+            }
+            else {
+                // TODO: add esle exception
+            }
+        })
     }
 
     connection() {

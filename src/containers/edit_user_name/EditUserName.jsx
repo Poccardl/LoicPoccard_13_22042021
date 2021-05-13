@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { store } from '../../app/store'
 import { userSelector } from '../../selectors/userSelector.js'
-import { updated } from '../../actions/updatedUserAction.js'
+import { updated } from '../../actions/userActions.js'
+import { Redirect } from 'react-router'
 
 class EditUserName extends React.Component {
 
@@ -28,12 +29,12 @@ class EditUserName extends React.Component {
         // TODO: API request here
         // updated user informations {firstName, lastName}
         this.setState({isRedirect: true})
-        this.props.updated(false)
+        this.props.updated(false, store.getState().session.token)
     }
 
     handleCancel() {
         this.setState({isRedirect: true})
-        this.props.updated(false)
+        this.props.updated(false, store.getState().session.token)
 
     }
 
@@ -42,6 +43,7 @@ class EditUserName extends React.Component {
             <>
             {this.state.isRedirect ?
             <>
+            <Redirect push to="/profile"/>
             </>
             :
             <>
