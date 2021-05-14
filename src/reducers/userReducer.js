@@ -1,4 +1,4 @@
-import { LOGIN, INIT, IS_EDIT, LOGOUT } from '../constants/userConstants.js'
+import { LOGIN, INIT, IS_EDIT, EDIT, LOGOUT } from '../constants/userConstants.js'
 
 const userSession = {
     isLogin: false,
@@ -25,6 +25,15 @@ const SessionReducer = (state = userSession, action) => {
                 token: action.payload.token
             }
         case IS_EDIT:
+            return {
+                isLogin: action.payload.isLogin,
+                isEdit: action.payload.isEdit,
+                email: action.payload.email,
+                firstName: action.payload.firstName,
+                lastName: action.payload.lastName,
+                token: action.payload.token
+            }
+        case EDIT:
             return {
                 isLogin: action.payload.isLogin,
                 isEdit: action.payload.isEdit,

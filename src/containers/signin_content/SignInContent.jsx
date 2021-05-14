@@ -32,7 +32,7 @@ class SignInContent extends React.Component {
         this.setState({[name]: value})
     }
 
-    handleSubmit(e) {
+    handleSubmit() {
         this.apiRequest()
     }
 

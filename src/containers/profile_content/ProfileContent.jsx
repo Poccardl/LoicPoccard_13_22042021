@@ -23,7 +23,7 @@ class ProfileContent extends React.Component {
         this.apiRequest()
     }
 
-    handleChange(e) {
+    handleChange() {
         this.props.is_edit(true, store.getState().session.email, store.getState().session.firstName, store.getState().session.lastName, store.getState().session.token)
     }
 

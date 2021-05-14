@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { store } from '../../app/store'
 import { userSelector } from '../../selectors/userSelector.js'
-import { is_edit } from '../../actions/userActions.js'
+import { is_edit, edit } from '../../actions/userActions.js'
 import { Redirect } from 'react-router'
 import axios from 'axios'
 
@@ -48,7 +48,7 @@ class EditUserName extends React.Component {
             console.log("[profile] data AXIOS ->", data)
             console.info(data.message)
             if (data.status === 200) {
-                this.props.is_edit(false, store.getState().session.email, this.state.firstName, this.state.lastName, store.getState().session.token)
+                this.props.edit(false, store.getState().session.email, this.state.firstName, this.state.lastName, store.getState().session.token)
             }
         })
     }
@@ -85,4 +85,4 @@ class EditUserName extends React.Component {
     }
 }
 
-export default connect(userSelector, {is_edit})(EditUserName)
+export default connect(userSelector, {is_edit, edit})(EditUserName)

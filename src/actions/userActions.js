@@ -31,6 +31,18 @@ export const is_edit = (isEdit, email, firstName, lastName, token) => ({
     }
 })
 
+export const edit = (isEdit, email, firstName, lastName, token) => ({
+    type: types.EDIT,
+    payload: {
+        isLogin: true,
+        isEdit,
+        email,
+        firstName,
+        lastName,
+        token
+    }
+})
+
 export const logout = () => ({
     type: types.LOGOUT,
     payload: {
