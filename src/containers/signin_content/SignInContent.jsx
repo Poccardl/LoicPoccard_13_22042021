@@ -22,6 +22,7 @@ class SignInContent extends React.Component {
             email: "",
             username: "",
             password: "",
+            remember: false,
             firstName: "",
             lastName: "",
             token: ""
