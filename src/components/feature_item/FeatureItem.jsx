@@ -2,6 +2,7 @@ import React from 'react'
 import icon_chat from '../../assets/img/icon-chat.png'
 import icon_money from '../../assets/img/icon-money.png'
 import icon_security from '../../assets/img/icon-security.png'
+import PropTypes from 'prop-types'
 
 export class FeatureItem extends React.Component {
 
@@ -21,4 +22,6 @@ export class FeatureItem extends React.Component {
     }
 }
 
-// TODO: Proptypes
+FeatureItem.propTypes = {
+    data: PropTypes.object
+}

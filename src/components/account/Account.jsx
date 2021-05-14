@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export class Account extends React.Component {
 
@@ -20,4 +21,6 @@ export class Account extends React.Component {
     }
 }
 
-// TODO: Proptypes
+Account.propTypes = {
+    account: PropTypes.object
+}
