@@ -1,8 +1,8 @@
-import { LOGIN, INIT, UPDATE, LOGOUT } from '../constants/userConstants.js'
+import { LOGIN, INIT, IS_EDIT, LOGOUT } from '../constants/userConstants.js'
 
 const userSession = {
     isLogin: false,
-    editUser: false,
+    isEdit: false,
     email: undefined,
     firstName: undefined,
     lastName: undefined,
@@ -24,10 +24,13 @@ const SessionReducer = (state = userSession, action) => {
                 lastName: action.payload.lastName,
                 token: action.payload.token
             }
-        case UPDATE:
+        case IS_EDIT:
             return {
                 isLogin: action.payload.isLogin,
-                editUser: action.payload.editUser,
+                isEdit: action.payload.isEdit,
+                email: action.payload.email,
+                firstName: action.payload.firstName,
+                lastName: action.payload.lastName,
                 token: action.payload.token
             }
         case LOGOUT:

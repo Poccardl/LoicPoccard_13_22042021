@@ -3,7 +3,7 @@ import { Account } from '../../components/account/Account.jsx'
 import accounts from '../../data/accounts.json'
 import EditUserName from '../edit_user_name/EditUserName.jsx'
 import { connect } from 'react-redux'
-import { init, updated } from '../../actions/userActions.js'
+import { init, is_edit } from '../../actions/userActions.js'
 import { userSelector } from '../../selectors/userSelector.js'
 import { store } from '../../app/store'
 import axios from 'axios'
@@ -14,9 +14,7 @@ class ProfileContent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            editUser: false,
-            firstName: "",
-            lastName: ""
+            isEdit: false
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -26,7 +24,7 @@ class ProfileContent extends React.Component {
     }
 
     handleChange(e) {
-        this.props.updated(true, store.getState().session.token)
+        this.props.is_edit(true, store.getState().session.email, store.getState().session.firstName, store.getState().session.lastName, store.getState().session.token)
     }
 
     apiRequest() {
@@ -36,8 +34,7 @@ class ProfileContent extends React.Component {
             const data = res.data;
             console.log("[profile] data AXIOS ->", data)
             console.info(data.message)
-            // TODO: this.props.init() ?
-            this.setState({firstName: data.body.firstName , lastName: data.body.lastName})
+            this.props.init(data.body.email, data.body.firstName, data.body.lastName, store.getState().session.token)
         })
     }
 
@@ -45,8 +42,8 @@ class ProfileContent extends React.Component {
         return (
             <>
             <div className="header">
-                <h1>Welcome back<br />{this.state.firstName} {this.state.lastName}!</h1>
-                {store.getState().session.editUser ? <EditUserName /> : <button className="edit-button" onClick={this.handleChange}>Edit Name</button>}
+                <h1>Welcome back<br/>{store.getState().session.firstName} {store.getState().session.lastName}!</h1>
+                {store.getState().session.isEdit ? <EditUserName /> : <button className="edit-button" onClick={this.handleChange}>Edit Name</button>}
             </div>
             <h2 className="sr-only">Accounts</h2>
             {accounts.map((account, index) => (
@@ -57,4 +54,4 @@ class ProfileContent extends React.Component {
     }
 }
 
-export default connect(userSelector, {init, updated})(ProfileContent)
+export default connect(userSelector, {init, is_edit})(ProfileContent)

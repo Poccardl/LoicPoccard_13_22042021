@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { store } from '../../app/store'
 import { userSelector } from '../../selectors/userSelector.js'
-import { updated } from '../../actions/userActions.js'
+import { is_edit } from '../../actions/userActions.js'
 import { Redirect } from 'react-router'
+import axios from 'axios'
 
 class EditUserName extends React.Component {
 
@@ -26,16 +27,30 @@ class EditUserName extends React.Component {
     }
 
     handleSubmit() {
-        // TODO: API request here
-        // updated user informations {firstName, lastName}
+        this.apiRequest()
         this.setState({isRedirect: true})
-        this.props.updated(false, store.getState().session.token)
     }
 
     handleCancel() {
         this.setState({isRedirect: true})
-        this.props.updated(false, store.getState().session.token)
+        this.props.is_edit(false, store.getState().session.email, store.getState().session.firstName, store.getState().session.lastName, store.getState().session.token)
+    }
 
+    apiRequest() {
+        const url = `http://localhost:3001/api/v1/user/profile`
+        const json = {
+            "firstName": this.state.firstName,
+            "lastName": this.state.lastName
+        }
+        axios.put(url, json, {headers: {Authorization: `Bearer ${store.getState().session.token}`}})
+        .then(res => {
+            const data = res.data;
+            console.log("[profile] data AXIOS ->", data)
+            console.info(data.message)
+            if (data.status === 200) {
+                this.props.is_edit(false, store.getState().session.email, this.state.firstName, this.state.lastName, store.getState().session.token)
+            }
+        })
     }
 
     render() {
@@ -70,4 +85,4 @@ class EditUserName extends React.Component {
     }
 }
 
-export default connect(userSelector, {updated})(EditUserName)
+export default connect(userSelector, {is_edit})(EditUserName)

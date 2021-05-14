@@ -19,11 +19,14 @@ export const init = (email, firstName, lastName, token) => ({
     }
 })
 
-export const updated = (editUser, token) => ({
-    type: types.UPDATE,
+export const is_edit = (isEdit, email, firstName, lastName, token) => ({
+    type: types.IS_EDIT,
     payload: {
         isLogin: true,
-        editUser,
+        isEdit,
+        email,
+        firstName,
+        lastName,
         token
     }
 })
