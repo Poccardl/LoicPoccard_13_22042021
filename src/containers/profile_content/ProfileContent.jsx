@@ -1,7 +1,7 @@
 import React from 'react'
 import { Account } from '../../components/account/Account.jsx'
 import accounts from '../../data/accounts.json'
-import EditUserName from '../edit_user_name/EditUserName.jsx'
+import EditUserInfos from '../edit_user_name/EditUserInfos.jsx'
 import { connect } from 'react-redux'
 import { init, is_edit } from '../../actions/userActions.js'
 import { userSelector } from '../../selectors/userSelector.js'
@@ -43,7 +43,7 @@ class ProfileContent extends React.Component {
             <>
             <div className="header">
                 <h1>Welcome back<br/>{store.getState().session.firstName} {store.getState().session.lastName}!</h1>
-                {store.getState().session.isEdit ? <EditUserName /> : <button className="edit-button" onClick={this.handleChange}>Edit Name</button>}
+                {store.getState().session.isEdit ? <EditUserInfos /> : <button className="edit-button" onClick={this.handleChange}>Edit Name</button>}
             </div>
             <h2 className="sr-only">Accounts</h2>
             {accounts.map((account, index) => (
