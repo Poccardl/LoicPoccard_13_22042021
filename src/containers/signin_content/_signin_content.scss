@@ -17,6 +17,12 @@
             padding: 5px;
             font-size: 1.2rem;
         }
+        .not_valid {
+            color: red;
+        }
+        .valid {
+            color: green;
+        }
     }
     .input-remember {
         display: flex;

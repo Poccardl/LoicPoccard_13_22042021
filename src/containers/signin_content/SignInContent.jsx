@@ -7,12 +7,17 @@ import { userSelector } from '../../selectors/userSelector.js'
 import { Redirect } from 'react-router'
 import { store } from '../../app/store'
 import axios from 'axios'
+import { ValidationInfo } from '../../components/validation_info/ValidationInfo.jsx'
+import { ValidationSignIn } from '../../components/validation_signin/ValidationSignIn.jsx'
 
 class SignInContent extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
+            emailIsValid: true,
+            validation_class: "",
+            fromIsValid: true,
             isLogin: undefined,
             email: "",
             username: "",
@@ -29,6 +34,22 @@ class SignInContent extends React.Component {
         const name = e.target.name
         const type = e.target.type
         const value = type === 'checkbox' ? e.target.checked : e.target.value
+        let isValid = false
+        let validation_class = 'not_valid'
+        if (name === 'email') {
+            const regex_mail = RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+            const regex_is = regex_mail.test(value)
+            if (regex_is) {
+                isValid = true
+                validation_class = 'valid'
+            } else {
+                if (this.state.emailIsValid === true || this.state.emailIsValid === undefined) {
+                    isValid = false
+                    validation_class = 'not_valid'
+                }
+            }
+            this.setState({emailIsValid: isValid, validation_class: validation_class})
+        }
         this.setState({[name]: value})
     }
 
@@ -47,16 +68,12 @@ class SignInContent extends React.Component {
         axios.post(url, json)
         .then(res => {
             const data = res.data;
-            console.log("[login] data AXIOS ->", data)
-            console.info(data.message)
             if (data.status === 200) {
-                this.setState({token: data.body.token})
+                this.setState({fromIsValid: true, token: data.body.token})
                 this.connection()
             }
-            else {
-                // TODO: add esle exception
-            }
         })
+        .catch(this.setState({fromIsValid: false}))
     }
 
     connection() {
@@ -72,7 +89,8 @@ class SignInContent extends React.Component {
                 <form>
                     <div className="input-wrapper">
                         <label htmlFor="email">Email</label>
-                        <input type="text" id="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+                        <input className={this.state.validation_class} type="text" id="email" name="email" value={this.state.email} onChange={this.handleChange}/>
+                        {this.state.emailIsValid ? "" : <ValidationInfo />}
                     </div>
                     <div className="input-wrapper">
                         <label htmlFor="password">Password</label>
@@ -83,6 +101,7 @@ class SignInContent extends React.Component {
                         <label htmlFor="remember" >Remember me</label>
                     </div>
                     {store.getState().session.isLogin ? <Redirect push to="/profile"/> : <span className="sign-in-button" onClick={this.handleSubmit}>Sign In</span>}
+                    {this.state.fromIsValid ? "" : <ValidationSignIn />}
                 </form>
             </section>
             </>

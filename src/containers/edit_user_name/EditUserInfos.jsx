@@ -38,6 +38,12 @@ class EditUserName extends React.Component {
 
     apiRequest() {
         const url = `http://localhost:3001/api/v1/user/profile`
+        if (this.state.firstName === "") {
+            this.setState({firstName: store.getState().session.firstName})
+        }
+        if (this.state.lastName === "") {
+            this.setState({lastName: store.getState().session.lastName})
+        }
         const json = {
             "firstName": this.state.firstName,
             "lastName": this.state.lastName
@@ -45,8 +51,6 @@ class EditUserName extends React.Component {
         axios.put(url, json, {headers: {Authorization: `Bearer ${store.getState().session.token}`}})
         .then(res => {
             const data = res.data;
-            console.log("[profile] data AXIOS ->", data)
-            console.info(data.message)
             if (data.status === 200) {
                 this.props.edit(false, store.getState().session.email, this.state.firstName, this.state.lastName, store.getState().session.token)
             }

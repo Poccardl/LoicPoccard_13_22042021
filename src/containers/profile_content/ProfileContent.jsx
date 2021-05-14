@@ -32,8 +32,6 @@ class ProfileContent extends React.Component {
         axios.post(url, {}, {headers: {Authorization: `Bearer ${store.getState().session.token}`}})
         .then(res => {
             const data = res.data;
-            console.log("[profile] data AXIOS ->", data)
-            console.info(data.message)
             this.props.init(data.body.email, data.body.firstName, data.body.lastName, store.getState().session.token)
         })
     }
