@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 import { logout } from '../../actions/userActions.js'
 import { userSelector } from '../../selectors/userSelector.js'
 
-
 class Header extends React.Component {
 
     render() {

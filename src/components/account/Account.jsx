@@ -19,3 +19,5 @@ export class Account extends React.Component {
         )
     }
 }
+
+// TODO: Proptypes

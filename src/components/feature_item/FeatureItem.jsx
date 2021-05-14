@@ -20,3 +20,5 @@ export class FeatureItem extends React.Component {
         )
     }
 }
+
+// TODO: Proptypes

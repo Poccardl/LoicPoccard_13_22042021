@@ -8,7 +8,6 @@ import { userSelector } from '../../selectors/userSelector.js'
 import { store } from '../../app/store'
 import axios from 'axios'
 
-
 class ProfileContent extends React.Component {
 
     constructor(props) {

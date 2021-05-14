@@ -63,28 +63,28 @@ class EditUserName extends React.Component {
         return (
             <>
             {this.state.isRedirect ?
-            <>
-            <Redirect push to="/profile"/>
-            </>
-            :
-            <>
-            <form className="edit_username_form">
-                <div className="inputs">
-                    <div>
-                        <label htmlFor="firstName"/>
-                        <input type="text" id="firstName" name="firstName" placeholder={store.getState().session.firstName} value={this.state.firstName} onChange={this.handleChange}/>
+                <>
+                <Redirect push to="/profile"/>
+                </>
+                :
+                <>
+                <form className="edit_username_form">
+                    <div className="inputs">
+                        <div>
+                            <label htmlFor="firstName"/>
+                            <input type="text" id="firstName" name="firstName" placeholder={store.getState().session.firstName} value={this.state.firstName} onChange={this.handleChange}/>
+                        </div>
+                        <div>
+                            <label htmlFor="lastName"/>
+                            <input type="text" id="lastName" name="lastName" placeholder={store.getState().session.lastName} value={this.state.lastName} onChange={this.handleChange}/>
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="lastName"/>
-                        <input type="text" id="lastName" name="lastName" placeholder={store.getState().session.lastName} value={this.state.lastName} onChange={this.handleChange}/>
+                    <div className="buttons">
+                        <span className="edit-button" onClick={this.handleSubmit}>Save</span>
+                        <span className="edit-button" onClick={this.handleCancel}>Cancel</span>
                     </div>
-                </div>
-                <div className="buttons">
-                    <span className="edit-button" onClick={this.handleSubmit}>Save</span>
-                    <span className="edit-button" onClick={this.handleCancel}>Cancel</span>
-                </div>
-            </form>
-            </>
+                </form>
+                </>
             }
             </>
         )
