@@ -73,7 +73,9 @@ class SignInContent extends React.Component {
                 this.connection()
             }
         })
-        .catch(this.setState({fromIsValid: false}))
+        .catch((error) => {
+            this.setState({fromIsValid: false})
+        })
     }
 
     connection() {
