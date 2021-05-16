@@ -1,44 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# OPENCLASSROOMS PROJECT 13
 
-## Available Scripts
+Creation of the frontend of a banking application with [React](https://reactjs.org/) and [Redux](https://redux.js.org/).
+A backend using [Node.js](https://nodejs.org/en/) is provided to allow HTPP calls and retrieve the data.
 
-In the project directory, you can run:
+## 1. Prerequisites
+* You need [Node.js](https://nodejs.org/en/) for use npm
+* You nedd [Git](https://git-scm.com/) for clone this repository
 
-### `npm start`
+## 2. Getting Started
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 2.2 Installation
+* Clone this repository on your computer `git clone https://github.com/Poccardl/LoicPoccard_13_22042021.git`
+* Go to the project folder `cd LoicPoccard_13_22042021`
+* Install all dependencies of you need for run this project `npm install`
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### 2.3 Run the project
+* Run project
+    `npm start`
+* Open your browther ([localhost:3000](http://localhost:3000/) port by default)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 3. Backend
+API for the application.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 3.1 Installation
+* To get user API fork this github [repository](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) and follow the instructions
