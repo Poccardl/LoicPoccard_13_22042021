@@ -5,7 +5,7 @@ A backend using [Node.js](https://nodejs.org/en/) is provided to allow HTPP call
 
 ## 1. Prerequisites
 * You need [Node.js](https://nodejs.org/en/) for use npm
-* You nedd [Git](https://git-scm.com/) for clone this repository
+* You need [Git](https://git-scm.com/) for clone this repository
 
 ## 2. Getting Started
 
