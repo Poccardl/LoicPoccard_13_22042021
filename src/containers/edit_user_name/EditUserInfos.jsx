@@ -5,6 +5,7 @@ import { userSelector } from '../../selectors/userSelector.js'
 import { is_edit, edit } from '../../actions/userActions.js'
 import { Redirect } from 'react-router'
 import axios from 'axios'
+import { url_api } from '../../constants/urlConstant.js'
 
 class EditUserName extends React.Component {
 
@@ -58,7 +59,7 @@ class EditUserName extends React.Component {
      * @date 2021-05-16
      */
     apiRequest() {
-        const url = `http://localhost:3001/api/v1/user/profile`
+        const url = `${url_api}profile`
         const json = {
             "firstName": this.state.firstName,
             "lastName": this.state.lastName

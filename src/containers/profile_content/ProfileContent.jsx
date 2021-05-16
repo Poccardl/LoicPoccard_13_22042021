@@ -7,6 +7,7 @@ import { init, is_edit } from '../../actions/userActions.js'
 import { userSelector } from '../../selectors/userSelector.js'
 import { store } from '../../app/store'
 import axios from 'axios'
+import { url_api } from '../../constants/urlConstant.js'
 
 class ProfileContent extends React.Component {
 
@@ -36,7 +37,7 @@ class ProfileContent extends React.Component {
      * @date 2021-05-16
      */
     apiRequest() {
-        const url = `http://localhost:3001/api/v1/user/profile`
+        const url = `${url_api}profile`
         axios.post(url, {}, {headers: {Authorization: `Bearer ${store.getState().session.token}`}})
         .then(res => {
             const data = res.data;

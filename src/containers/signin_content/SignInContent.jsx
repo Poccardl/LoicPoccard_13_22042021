@@ -9,6 +9,7 @@ import { store } from '../../app/store'
 import axios from 'axios'
 import { ValidationInfo } from '../../components/validation_info/ValidationInfo.jsx'
 import { ValidationSignIn } from '../../components/validation_signin/ValidationSignIn.jsx'
+import { url_api } from '../../constants/urlConstant.js'
 
 class SignInContent extends React.Component {
 
@@ -75,7 +76,7 @@ class SignInContent extends React.Component {
      * @date 2021-05-16
      */
     apiRequest() {
-        const url = `http://localhost:3001/api/v1/user/login`
+        const url = `${url_api}login`
         const json = {
             "email": this.state.email,
             "password": this.state.password
