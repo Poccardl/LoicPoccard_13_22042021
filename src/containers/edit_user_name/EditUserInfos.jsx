@@ -20,22 +20,43 @@ class EditUserName extends React.Component {
         this.handleCancel = this.handleCancel.bind(this)
     }
 
+    /**
+     * retrieves the value of an 'onChange' event, more precisely the values of the fields of the user's information modification form,
+     * attribute the new value of the fields in the local state
+     * @date 2021-05-16
+     * @param {object} e - 'onChange' event type
+     */
     handleChange(e) {
         const name = e.target.name
         const value = e.target.value
         this.setState({[name]: value})
     }
 
+    /**
+     * calls the this.apiRequest() method and assigns the following value to the local state -> {this.state.isRedirect: true}
+     * @date 2021-05-16
+     */
     handleSubmit() {
         this.apiRequest()
         this.setState({isRedirect: true})
     }
 
+    /**
+     * assigns the following value to the local state {this.state.isRedirect: true},
+     * call the is_edit action (redux)
+     * @date 2021-05-16
+     */
     handleCancel() {
         this.setState({isRedirect: true})
         this.props.is_edit(false, store.getState().session.email, store.getState().session.firstName, store.getState().session.lastName, store.getState().session.token)
     }
 
+    /**
+     * makes an axios request of type 'put' to the user API with the new information firstName and lastName,
+     * redefines the following data to the local state -> {firstName: firstName, lastName: lastName},
+     * call the edit action (redux)
+     * @date 2021-05-16
+     */
     apiRequest() {
         const url = `http://localhost:3001/api/v1/user/profile`
         const json = {

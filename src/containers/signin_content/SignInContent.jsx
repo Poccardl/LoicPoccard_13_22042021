@@ -31,6 +31,12 @@ class SignInContent extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
+    /**
+     * retrieves the value of an 'onChange' event, more precisely the values of the connection form fields,
+     * assign the following values to the local state -> {emailIsValid: false/true, validation_class: valid/not_valid} & input field values
+     * @date 2021-05-16
+     * @param {object} e - 'onChange' event type
+     */
     handleChange(e) {
         const name = e.target.name
         const type = e.target.type
@@ -54,12 +60,20 @@ class SignInContent extends React.Component {
         this.setState({[name]: value})
     }
 
+    /**
+     * calls the method this.apiRequest()
+     * @date 2021-05-16
+     */
     handleSubmit() {
         this.apiRequest()
     }
 
-    // "email": "tony@stark.com",
-    // "password": "password123"
+    /**
+     * makes a 'post' axios request to the user API,
+     * if the connection information is correct then call the method this.connection() and assign the following values to the local state -> {this.state.fromIsValid: true, this.state.token: token},
+     * else {this.state.fromIsValid: false}
+     * @date 2021-05-16
+     */
     apiRequest() {
         const url = `http://localhost:3001/api/v1/user/login`
         const json = {
@@ -79,6 +93,10 @@ class SignInContent extends React.Component {
         })
     }
 
+    /**
+     * call the (redux) login action by giving it the token of the connected user
+     * @date 2021-05-16
+     */
     connection() {
         this.props.login(this.state.token)
     }

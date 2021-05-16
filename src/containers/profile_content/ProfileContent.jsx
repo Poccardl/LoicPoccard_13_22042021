@@ -22,10 +22,19 @@ class ProfileContent extends React.Component {
         this.apiRequest()
     }
 
+    /**
+     * call the action (redux) is_edit
+     * @date 2021-05-16
+     */
     handleChange() {
         this.props.is_edit(true, store.getState().session.email, store.getState().session.firstName, store.getState().session.lastName, store.getState().session.token)
     }
 
+    /**
+     * makes a 'post' axios request to the user API,
+     * calls the (redux) init action to keep the information of the connected user in the global state
+     * @date 2021-05-16
+     */
     apiRequest() {
         const url = `http://localhost:3001/api/v1/user/profile`
         axios.post(url, {}, {headers: {Authorization: `Bearer ${store.getState().session.token}`}})
